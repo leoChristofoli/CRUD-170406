@@ -15,14 +15,23 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from django.contrib.auth.decorators import login_required
 
+from django.contrib.auth.decorators import login_required
 from oper import views as oper_views
 
 urlpatterns = [
     url(r'^$', oper_views.ProdutoList.as_view(), name='produto_list'),
-    url(r'^add/$', oper_views.ProdutoCreate.as_view(), name='produto_add'),
-    url(r'^edit/(?P<pk>\d+)$', oper_views.ProdutoUpdate.as_view(), name='produto_edit'),
-    url(r'^delete/(?P<pk>\d+)$', oper_views.ProdutoDelete.as_view(), name='produto_delete')
+    url(r'^add/$', login_required(oper_views.ProdutoCreate.as_view(),
+        login_url='account_login'),
+        name='produto_add'
+        ),
+    url(r'^edit/(?P<pk>\d+)$', login_required(oper_views.ProdutoUpdate.as_view(),
+        login_url='account_login'),
+        name='produto_edit'
+        ),
+    url(r'^delete/(?P<pk>\d+)$', login_required(oper_views.ProdutoDelete.as_view(),
+        login_url='account_login'),
+        name='produto_delete'
+        )
 
 ]
