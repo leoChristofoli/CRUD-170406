@@ -22,5 +22,5 @@ AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
 MEDIA_URL = "https://%s.s3.amazonaws.com/" % os.environ['AWS_STORAGE_BUCKET_NAME']
 STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
-STATICFILES_STORAGE = "liasis.s3utils.StaticS3BotoStorage"
+STATICFILES_STORAGE = "simplecrud.s3utils.StaticS3BotoStorage"
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
