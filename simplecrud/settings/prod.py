@@ -5,6 +5,7 @@ import os
 from .base import *
 print('Prod Settings')
 
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 INSTALLED_APPS += ("gunicorn", "storages")
 
 db_from_env = dj_database_url.config(conn_max_age=500)
