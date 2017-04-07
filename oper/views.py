@@ -11,6 +11,15 @@ from django.core.urlresolvers import reverse_lazy
 from oper import models as oper_models
 
 
+def get_ip(request):
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    return ip
+
+
 class ProdutoList(ListView):
     model = oper_models.Produto
 
@@ -26,6 +35,7 @@ class ProdutoCreate(CreateView):
     def form_valid(self, form):
         obj = form.save(commit=False)
         obj.created_by = self.request.user
+        obj.client_ip = get_ip(self.request)
         obj.save()
         return super(ProdutoCreate, self).form_valid(form)
 

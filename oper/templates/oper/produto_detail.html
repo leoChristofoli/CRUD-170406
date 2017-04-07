@@ -12,6 +12,8 @@
         <li> <strong>Quando atualizado: </strong>{{ produto.when_updated }}</li>
         <li> <strong>Inserido por: </strong>{{ produto.created_by }}</li>
         <li> <strong>Última atualização por: </strong>{{ produto.updated_by }}</li>
+        <li> <strong>IP do cliente: </strong>{{ produto.client_ip }}</li>
     </ul>
 
+<a href="{% url 'produto_list' %}">Voltar</a>
 {% endblock %}

@@ -18,6 +18,7 @@ class Produto(models.Model):
     when_updated = models.DateTimeField(null=True, auto_now=True)
     created_by = models.ForeignKey(User, null=True)
     updated_by = models.ForeignKey(User, null=True, related_name='produto_updated')
+    client_ip = models.GenericIPAddressField(null=True)
 
     def __unicode__(self):
         return self.nome
