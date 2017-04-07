@@ -17,7 +17,10 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 from django.contrib.auth.decorators import login_required
+from django.views.generic.detail import DetailView
+
 from oper import views as oper_views
+from oper import models as oper_models
 
 urlpatterns = [
     url(r'^$', oper_views.ProdutoList.as_view(), name='produto_list'),
@@ -32,6 +35,9 @@ urlpatterns = [
     url(r'^delete/(?P<pk>\d+)$', login_required(oper_views.ProdutoDelete.as_view(),
         login_url='account_login'),
         name='produto_delete'
+        ),
+    url(r'^detail/(?P<pk>\d+)$', DetailView.as_view(model=oper_models.Produto),
+        name='produto_datail'
         )
 
 ]

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block content %}
+
+<h1>{{ object.nome }}</h1>
+    <ul>
+        <li> <strong>Descrição: </strong> {{ produto.descricao }}</li>
+        <li><strong>Quantidade: </strong>{{ produto.qtd }}</li>
+        <li> <strong>Quando inserido: </strong>{{ produto.when_created }}</li>
+        <li> <strong>Quando atualizado: </strong>{{ produto.when_updated }}</li>
+        <li> <strong>Inserido por: </strong>{{ produto.created_by }}</li>
+        <li> <strong>Última atualização por: </strong>{{ produto.updated_by }}</li>
+    </ul>
+
+{% endblock %}

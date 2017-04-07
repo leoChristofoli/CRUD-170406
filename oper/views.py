@@ -23,6 +23,15 @@ class ProdutoCreate(CreateView):
     def get_success_url(self):
         return reverse_lazy('produto_list')
 
+    def dispatch(self, *args, **kwargs):
+        return super(ProdutoCreate, self).dispatch(*args, **kwargs)
+
+    def form_valid(self, form):
+        obj = form.save(commit=False)
+        obj.created_by = self.request.user
+        obj.save()
+        return super(ProdutoCreate, self).form_valid(form)
+
 
 class ProdutoUpdate(UpdateView):
     model = oper_models.Produto
@@ -31,6 +40,12 @@ class ProdutoUpdate(UpdateView):
 
     def get_success_url(self):
         return reverse_lazy('produto_list')
+
+    def form_valid(self, form):
+        obj = form.save(commit=False)
+        obj.updated_by = self.request.user
+        obj.save()
+        return super(ProdutoUpdate, self).form_valid(form)
 
 
 class ProdutoDelete(DeleteView):
