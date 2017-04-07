@@ -25,6 +25,8 @@ from oper import models as oper_models
 urlpatterns = [
     url(r'^$', oper_views.ProdutoList.as_view(), name='produto_list'),
 
+    url(r'^deleted/$', oper_views.ProdutoList.as_view(model=oper_models.DeletedProduto), name='deleted_produto_list'),
+
     url(r'^add/$', login_required(oper_views.ProdutoCreate.as_view(),
         login_url='account_login'),
         name='produto_add'
