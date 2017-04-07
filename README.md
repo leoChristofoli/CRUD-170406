@@ -1,5 +1,5 @@
 # CRUD-170406
-https://desolate-taiga-45992.herokuapp.com/
+https://fathomless-taiga-71479.herokuapp.com/
 
 
 Sistema CRUD feito em Python sobre o framework django.
@@ -18,9 +18,17 @@ Foram usadas CBVs (Class based views) para agilizar o desenvolvimento:
 
 isso:
 ```Python
-class ServerCreate(CreateView):
-    model = Server
-    success_url = reverse_lazy('server_list')
-    fields = ['name', 'ip', 'order']
+class ProdutoCreate(CreateView):
+    model = oper_models.Produto
+    success_url = reverse_lazy('produto_add')
+    fields = ['nome', 'descricao', 'qtd']
 ```
 invés disso:
+```Python
+def produto_create(request, template_name='oper/produto_form.html'):
+    form = ProdutoForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('produto_list')
+    return render(request, template_name, {'form':form})
+```
