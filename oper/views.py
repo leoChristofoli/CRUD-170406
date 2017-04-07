@@ -7,8 +7,10 @@ from django.http import HttpResponse
 from django.views.generic import TemplateView,ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
+from django.utils.text import slugify
 
 from oper import models as oper_models
+from oper.forms import ProdutoForm
 
 
 def get_ip(request):
@@ -26,8 +28,9 @@ class ProdutoList(ListView):
 
 class ProdutoCreate(CreateView):
     model = oper_models.Produto
+    form_class = ProdutoForm
     success_url = reverse_lazy('produto_list')
-    fields = ['nome', 'descricao', 'qtd']
+    # fields = ['nome', 'descricao', 'qtd']
 
     def dispatch(self, *args, **kwargs):
         return super(ProdutoCreate, self).dispatch(*args, **kwargs)
