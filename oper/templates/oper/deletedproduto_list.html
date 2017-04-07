@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block content %}
+    <h1>Produtos Deletados</h1>
+
+    <ul>
+        {% if object_list %}
+        {% for produto in object_list %}
+        <h3>{{ produto.nome }}  :</h3>
+        <li> <strong>Descrição: </strong> {{ produto.descricao }}</li>
+        <li><strong>Quantidade: </strong>{{ produto.qtd }}</li>
+        <li> <strong>Quando inserido: </strong>{{ produto.when_created }}</li>
+        <li> <strong>Quando atualizado: </strong>{{ produto.when_updated }}</li>
+        <li> <strong>Inserido por: </strong>{{ produto.created_by }}</li>
+        <li> <strong>Última atualização por: </strong>{{ produto.updated_by }}</li>
+        <li> <strong>IP do cliente: </strong>{{ produto.client_ip }}</li>
+        {% endfor %}
+        {% else %}
+        Não há produtos cadastrados
+        {% endif %}
+    </ul>
+
+<a href="{% url 'produto_list' %}">Voltar</a>
+
+{% endblock %}

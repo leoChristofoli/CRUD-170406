@@ -26,6 +26,11 @@ class ProdutoList(ListView):
     model = oper_models.Produto
 
 
+class DeletedProdutoList(ListView):
+    model = oper_models.DeletedProduto
+    template_name = 'oper/produto_list.html'
+
+
 class ProdutoCreate(CreateView):
     model = oper_models.Produto
     form_class = ProdutoForm
@@ -58,3 +63,17 @@ class ProdutoUpdate(UpdateView):
 class ProdutoDelete(DeleteView):
     model = oper_models.Produto
     success_url = reverse_lazy('produto_list')
+
+    def delete(self, request, *args, **kwargs):
+        obj = self.get_object()
+        deleted = oper_models.DeletedProduto()
+        deleted.nome = obj.nome
+        deleted.descricao = obj.descricao
+        deleted.qtd = obj.qtd
+        deleted.when_created = obj.when_created
+        deleted.when_updated = obj.when_updated
+        deleted.client_ip = obj.client_ip
+        deleted.created_by = obj.created_by
+        deleted.updated_by = obj.updated_by
+        deleted.save()
+        return super(ProdutoDelete, self).delete(request)
