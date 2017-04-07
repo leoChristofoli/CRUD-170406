@@ -37,7 +37,7 @@ urlpatterns = [
         name='produto_delete'
         ),
     url(r'^detail/(?P<pk>\d+)$', DetailView.as_view(model=oper_models.Produto),
-        name='produto_datail'
+        name='produto_detail'
         )
 
 ]
