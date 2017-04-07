@@ -20,11 +20,17 @@ class ProdutoCreate(CreateView):
     success_url = reverse_lazy('produto_add')
     fields = ['nome', 'descricao', 'qtd']
 
+    def get_success_url(self):
+        return reverse_lazy('produto_list')
+
 
 class ProdutoUpdate(UpdateView):
     model = oper_models.Produto
     success_url = reverse_lazy('produto_add')
     fields = ['nome', 'descricao', 'qtd']
+
+    def get_success_url(self):
+        return reverse_lazy('produto_list')
 
 
 class ProdutoDelete(DeleteView):

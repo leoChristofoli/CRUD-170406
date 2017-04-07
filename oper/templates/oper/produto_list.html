@@ -5,12 +5,16 @@
 {% block content %}
     <h1>Produtos</h1>
     <ul>
+        {% if object_list %}
         {% for produto in object_list %}
         <li>{{ produto.nome }}  :
             <a href="{% url 'produto_edit' produto.id %}">Editar</a>
             <a href="{% url 'produto_delete' produto.id %}">Remover</a>
         </li>
         {% endfor %}
+        {% else %}
+        Não há produtos cadastrados
+        {% endif %}
     </ul>
 
     <a class="btn btn-default" href="{% url 'produto_add' %}">Novo Produto</a>
