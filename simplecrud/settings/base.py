@@ -17,8 +17,6 @@ import dj_database_url
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
-print(BASE_DIR)
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
@@ -74,7 +72,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'templates'),
+            os.path.join(PROJECT_DIR, 'templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -145,9 +143,6 @@ MEDIA_URL = '/media/'
 STATICFILES_DIRS = [
     os.path.join(PROJECT_DIR, 'static'),
 ]
-
-print(STATIC_ROOT)
-print(STATICFILES_DIRS)
 
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
