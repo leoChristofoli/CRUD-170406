@@ -24,18 +24,22 @@ from oper import models as oper_models
 
 urlpatterns = [
     url(r'^$', oper_views.ProdutoList.as_view(), name='produto_list'),
+
     url(r'^add/$', login_required(oper_views.ProdutoCreate.as_view(),
         login_url='account_login'),
         name='produto_add'
         ),
+
     url(r'^edit/(?P<pk>\d+)$', login_required(oper_views.ProdutoUpdate.as_view(),
         login_url='account_login'),
         name='produto_edit'
         ),
+
     url(r'^delete/(?P<pk>\d+)$', login_required(oper_views.ProdutoDelete.as_view(),
         login_url='account_login'),
         name='produto_delete'
         ),
+
     url(r'^detail/(?P<pk>\d+)$', DetailView.as_view(model=oper_models.Produto),
         name='produto_detail'
         )
