@@ -32,3 +32,5 @@ def produto_create(request, template_name='oper/produto_form.html'):
         return redirect('produto_list')
     return render(request, template_name, {'form':form})
 ```
+
+Para rodar os testes: `python manage.py test`
