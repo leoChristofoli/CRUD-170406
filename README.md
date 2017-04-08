@@ -6,11 +6,11 @@ Sistema CRUD feito em Python sobre o framework django.
 
 - [ ] Banco de dados preferencialmente NoSQL -
 
-- [x] As operações que manipulam dados devem ser autenticadas - Para esse teste, qualquer usuário **cadastrado** pode realizar as operações
+- [x] As operações que manipulam dados devem ser autenticadas - `Para esse teste, qualquer usuário **cadastrado** pode realizar as operações`
 
-- [x] Testes do código (livre escolha) - Usado o mecanismo padrão do Django
+- [x] Testes do código (livre escolha) - `Usado o mecanismo padrão do Django`
     
-- [x] Deploy em um PaaS, ou em algum outro serviço na nuvem - Heroku
+- [x] Deploy em um PaaS, ou em algum outro serviço na nuvem - `Heroku`
 
 - [x] O código deve ser publicado no Github
 
@@ -32,3 +32,5 @@ def produto_create(request, template_name='oper/produto_form.html'):
         return redirect('produto_list')
     return render(request, template_name, {'form':form})
 ```
+
+Para rodar os testes: `python manage.py test`
