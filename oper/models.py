@@ -39,6 +39,7 @@ class DeletedProduto(models.Model):
     updated_by = models.ForeignKey(User, null=True, related_name='produto_del')
     client_ip = models.GenericIPAddressField(null=True)
     when_deleted = models.DateTimeField(null=True, auto_now_add=True)
+    deleted_by = models.ForeignKey(User, null=True, related_name='deleted_produto')
 
     def __unicode__(self):
         return self.nome

@@ -16,6 +16,7 @@
         <li> <strong>Inserido por: </strong>{{ produto.created_by }}</li>
         <li> <strong>Última atualização por: </strong>{{ produto.updated_by }}</li>
         <li> <strong>IP do cliente: </strong>{{ produto.client_ip }}</li>
+        <li> <strong>Deletado por: </strong>{{ produto.deleted_by }}</li>
         {% endfor %}
         {% else %}
         Não há produtos cadastrados

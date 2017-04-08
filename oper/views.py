@@ -75,5 +75,6 @@ class ProdutoDelete(DeleteView):
         deleted.client_ip = obj.client_ip
         deleted.created_by = obj.created_by
         deleted.updated_by = obj.updated_by
+        deleted.deleted_by = self.request.user
         deleted.save()
         return super(ProdutoDelete, self).delete(request)

@@ -3,9 +3,34 @@ from __future__ import unicode_literals
 
 from django.test import TestCase
 from django.test import Client
+import os
 
 from oper.models import Produto
 from datetime import datetime
+from selenium import webdriver
+from django.core.urlresolvers import reverse
+from django.contrib.staticfiles.testing import LiveServerTestCase
+
+
+class HomeNewVisitorTest(LiveServerTestCase):
+    def setUp(self):
+        PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        BASE_DIR = os.path.dirname(PROJECT_DIR)
+        chromedriver = os.path.join(BASE_DIR, 'CRUD-170406/bin/chromedriver')
+        os.environ["webdriver.chrome.driver"] = chromedriver
+        self.browser = webdriver.Chrome(chromedriver)
+        self.browser.implicitly_wait(3)
+
+    def tearDown(self):
+        self.browser.quit()
+
+    def get_full_url(self, namespace):
+        return self.live_server_url + reverse(namespace)
+
+    def test_home_title(self):
+
+        self.browser.get(self.get_full_url("produto_list"))
+        self.assertIn("CRUD", self.browser.title)
 
 
 class ProdutoTestCase(TestCase):
@@ -38,7 +63,7 @@ class ProdutoTestCase(TestCase):
         print(prod.nome)
 
 
-class LoginTestCase(TestCase):
+class ViewsTestCase(TestCase):
 
     def test_user_can_login(self):
         c = Client()
