@@ -25,12 +25,13 @@ class Produto(models.Model):
 
 
 class DeletedProduto(models.Model):
-    nome = models.CharField(max_length=255, unique=True)
+    nome = models.CharField(max_length=255)
     descricao = models.TextField(
         null=True,
         verbose_name='Descrição'
     )
     qtd = models.IntegerField(
+        null=True,
         verbose_name='Quantidade'
     )
     when_created = models.DateTimeField(null=True)
