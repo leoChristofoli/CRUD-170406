@@ -25,12 +25,13 @@ class Produto(models.Model):
 
 
 class DeletedProduto(models.Model):
-    nome = models.CharField(max_length=255, unique=True)
+    nome = models.CharField(max_length=255)
     descricao = models.TextField(
         null=True,
         verbose_name='Descrição'
     )
     qtd = models.IntegerField(
+        null=True,
         verbose_name='Quantidade'
     )
     when_created = models.DateTimeField(null=True)
@@ -39,6 +40,7 @@ class DeletedProduto(models.Model):
     updated_by = models.ForeignKey(User, null=True, related_name='produto_del')
     client_ip = models.GenericIPAddressField(null=True)
     when_deleted = models.DateTimeField(null=True, auto_now_add=True)
+    deleted_by = models.ForeignKey(User, null=True, related_name='deleted_produto')
 
     def __unicode__(self):
         return self.nome
