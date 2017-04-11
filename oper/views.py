@@ -3,10 +3,10 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render
 
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic import TemplateView,ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.core.urlresolvers import reverse_lazy
+from django.core.urlresolvers import reverse_lazy, reverse
 from django.utils.text import slugify
 
 from oper import models as oper_models
@@ -46,6 +46,17 @@ class ProdutoCreate(CreateView):
         obj.client_ip = get_ip(self.request)
         obj.save()
         return super(ProdutoCreate, self).form_valid(form)
+
+
+def produto_create(request, template_name='oper/produto_form.html'):
+    form = ProdutoForm(request.POST or None)
+    if form.is_valid():
+        obj = form.save(commit=False)
+        obj.created_by = request.user
+        obj.client_ip = get_ip(request)
+        obj.save()
+        return HttpResponseRedirect(reverse('produto_list'))
+    return render(request, template_name, {'form': form})
 
 
 class ProdutoUpdate(UpdateView):
