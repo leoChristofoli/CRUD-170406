@@ -16,7 +16,7 @@ INSTALLED_APPS += ("gunicorn", "storages")
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
-ALLOWED_HOSTS = ['fathomless-taiga-71479.herokuapp.com/*']
+ALLOWED_HOSTS = ['fathomless-taiga-71479.herokuapp.com']
 
 # AWS_QUERYSTRING_AUTH = False
 # AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
