@@ -66,6 +66,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     'csp.middleware.CSPMiddleware',
+
 ]
 
 ROOT_URLCONF = 'simplecrud.urls'
@@ -162,13 +163,21 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 SITE_ID = 1
 LOGIN_REDIRECT_URL = "/"
-#allauth
+# allauth
 ACCOUNT_EMAIL_VERIFICATION = "none"
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
+#
 
 CSP_DEFAULT_SRC = ("'none'",)
 CSP_STYLE_SRC = ("'self'",)
 CSP_SCRIPT_SRC = ("'self'",)
 CSP_FONT_SRC = ("'self'", 'fonts.googleapis.com')
 CSP_IMG_SRC = ("'self'",)
+
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+# SESSION_COOKIE_AGE = 5 * 60
+SECURE_SSL_REDIRECT = True
+SECURE_HSTS_SECONDS = 31536000

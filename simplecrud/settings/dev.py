@@ -12,3 +12,11 @@ except ImportError:
     pass
 
 SECRET_KEY = "9ghl@-+ocq7b--s-jmrh3b-$rvj57a5=t)v1-i64s0be*$--_1"
+
+INSTALLED_APPS += (
+
+    'sslserver',
+
+)
+
+SECURE_SSL_REDIRECT = False
