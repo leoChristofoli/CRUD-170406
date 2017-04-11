@@ -16,7 +16,7 @@ INSTALLED_APPS += ("gunicorn", "storages")
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['fathomless-taiga-71479.herokuapp.com/*']
 
 # AWS_QUERYSTRING_AUTH = False
 # AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
@@ -31,3 +31,4 @@ ALLOWED_HOSTS = ['*']
 # DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
