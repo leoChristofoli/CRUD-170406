@@ -30,7 +30,7 @@ class DeletedProdutoList(ListView):
     model = oper_models.DeletedProduto
     template_name = 'oper/produto_list.html'
 
-
+'''
 class ProdutoCreate(CreateView):
     model = oper_models.Produto
     form_class = ProdutoForm
@@ -46,6 +46,7 @@ class ProdutoCreate(CreateView):
         obj.client_ip = get_ip(self.request)
         obj.save()
         return super(ProdutoCreate, self).form_valid(form)
+'''
 
 
 def produto_create(request, template_name='oper/produto_form.html'):
