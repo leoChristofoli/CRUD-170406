@@ -11,6 +11,7 @@ from django.utils.text import slugify
 
 from oper import models as oper_models
 from oper.forms import ProdutoForm
+from ratelimit.decorators import ratelimit
 
 
 def get_ip(request):
@@ -25,10 +26,18 @@ def get_ip(request):
 class ProdutoList(ListView):
     model = oper_models.Produto
 
+    @ratelimit(key='ip', method=('POST', 'GET'), rate='10/m', block=True)
+    def get(self, request, *args, **kwargs):
+        return super(ProdutoList, self).get(request)
+
 
 class DeletedProdutoList(ListView):
     model = oper_models.DeletedProduto
     template_name = 'oper/produto_list.html'
+
+    @ratelimit(key='ip', method=('POST', 'GET'), rate='10/m', block=True)
+    def get(self, request, *args, **kwargs):
+        return super(DeletedProdutoList, self).get(request)
 
 
 '''
@@ -50,6 +59,7 @@ class ProdutoCreate(CreateView):
 '''
 
 
+@ratelimit(key='ip', method=('POST', 'GET'), rate='10/m')
 def produto_create(request, template_name='oper/produto_form.html'):
     form = ProdutoForm(request.POST or None)
     if form.is_valid():
@@ -72,6 +82,14 @@ class ProdutoUpdate(UpdateView):
         obj.save()
         return super(ProdutoUpdate, self).form_valid(form)
 
+    @ratelimit(key='ip', method=('POST', 'GET'), rate='10/m', block=True)
+    def get(self, request, *args, **kwargs):
+        return super(ProdutoUpdate, self).get(request)
+
+    @ratelimit(key='ip', method=('POST', 'GET'), rate='10/m', block=True)
+    def post(self, request, *args, **kwargs):
+        return super(ProdutoUpdate, self).post(request)
+
 
 class ProdutoDelete(DeleteView):
     model = oper_models.Produto
@@ -91,3 +109,12 @@ class ProdutoDelete(DeleteView):
         deleted.deleted_by = self.request.user
         deleted.save()
         return super(ProdutoDelete, self).delete(request)
+
+    @ratelimit(key='ip', method=('POST', 'GET'), rate='2/s', block=True)
+    def get(self, request, *args, **kwargs):
+        return super(ProdutoDelete, self).get(request)
+
+    @ratelimit(key='ip', method=('POST', 'GET'), rate='2/s', block=True)
+    def post(self, request, *args, **kwargs):
+        return super(ProdutoDelete, self).post(request)
+
