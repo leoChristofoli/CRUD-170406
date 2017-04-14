@@ -34,3 +34,16 @@ def produto_create(request, template_name='oper/produto_form.html'):
 ```
 
 Para rodar os testes: `python manage.py test`
+
+- [x] Ausência de controle de requisições - `Implementado um profiler básico, usando django-profiler`
+- [x] O cookie de sessão trafega em meio sem criptografia. `SESSION_COOKIE_SECURE, que faz parte do middleware default security.SecurityMiddleware, foi ativado`
+- [x] Ausência do cabeçalho HSTS. `SECURE_HSTS_SECONDS ativo`
+- [x] Ausência de verificação de integridade SRI para componentes carregados externamente. `adicionado atributo integrity no jquery`
+- [x] Ausência de uma política de segurança para conteúdo (cabeçalho CSP). `Utilizado o package disponibilizado pela mozilla, django-csp,
+para configurar a política: `
+- [ ] Log gravado client-side.
+- [x] CVE-2017-7233 e CVE-2017-7234. `upgrade para django 1.10.7`
+- [ ] Credenciais no código.
+- [x] CVE-2016-9014.
+- [ ] Recuperação de senha não funciona.
+- [x] Falha na lógica de negócio. Número negativo de produtos no cadastro. `Alterado de IntegerField para PositiveIntegerField`
