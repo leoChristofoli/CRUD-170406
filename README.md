@@ -45,7 +45,7 @@ Vulnerabilidades identificadas
 para configurar a política: `
 - [ ] Log gravado client-side.
 - [x] CVE-2017-7233 e CVE-2017-7234. `upgrade para django 1.10.7`
-- [ ] Credenciais no código.
+- [x] Credenciais no código.
 - [x] CVE-2016-9014.
 - [x] Recuperação de senha não funciona. `Servidor SMTP configurado - Sendgrid`
 - [x] Falha na lógica de negócio. Número negativo de produtos no cadastro. `Alterado de IntegerField para PositiveIntegerField`
