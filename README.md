@@ -35,7 +35,7 @@ def produto_create(request, template_name='oper/produto_form.html'):
 
 Para rodar os testes: `python manage.py test`
 -------------------------------------------------
-Vulnerabilidades identificadas
+## Vulnerabilidades identificadas
 
 - [x] Ausência de controle de requisições - `Implementado um profiler básico, usando django-profiler`
 - [x] O cookie de sessão trafega em meio sem criptografia. `SESSION_COOKIE_SECURE, que faz parte do middleware default security.SecurityMiddleware, foi ativado`
