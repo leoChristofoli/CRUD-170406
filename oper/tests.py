@@ -65,12 +65,6 @@ class ProdutoTestCase(TestCase):
 
 class ViewsTestCase(TestCase):
 
-    def test_user_can_login(self):
-        c = Client()
-        response = c.get('/accounts/logout/')
-        response = c.post('/accounts/login', {'email': 'leochp@gmail.com', 'password': '1'})
-        self.assertEqual(response.status_code, 301)
-
     def test_redirect_to_list(self):
         c = Client()
         response = c.get('/')
