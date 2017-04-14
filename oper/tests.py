@@ -81,3 +81,20 @@ class ViewsTestCase(TestCase):
         response = c.get('/produto/')
         self.assertEqual(response.content.strip().splitlines()[0], '<!DOCTYPE html>')
 
+
+class LimitTestCase(TestCase):
+
+    def setUp(self):
+        Produto.objects.create(nome="a0001", qtd=1)
+        Produto.objects.create(nome="a0002", qtd=1000)
+
+    def test_over_load(self):
+        c = Client()
+        # response = c.post(url, {'nome': 'pord1', 'descricao': 'aaa1', 'qtd': '50'})
+        for i in range(30):
+            response = c.get(reverse('produto_list'))
+            if i < 10:
+                self.assertEqual(response.status_code, 200)
+            else:
+                self.assertEqual(response.status_code, 403)
+

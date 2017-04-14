@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.validators import MaxValueValidator
 
 
 class Produto(models.Model):
@@ -11,8 +12,9 @@ class Produto(models.Model):
         null=True,
         verbose_name='Descrição'
     )
-    qtd = models.IntegerField(
-        verbose_name='Quantidade'
+    qtd = models.PositiveIntegerField(
+        verbose_name='Quantidade',
+        validators=[MaxValueValidator(9999)]
     )
     when_created = models.DateTimeField(null=True, auto_now_add=True)
     when_updated = models.DateTimeField(null=True, auto_now=True)
