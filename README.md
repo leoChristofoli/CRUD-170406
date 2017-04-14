@@ -42,7 +42,12 @@ Para rodar os testes: `python manage.py test`
 - [x] Ausência do cabeçalho HSTS. `SECURE_HSTS_SECONDS ativo`
 - [x] Ausência de verificação de integridade SRI para componentes carregados externamente. `adicionado atributo integrity no jquery`
 - [x] Ausência de uma política de segurança para conteúdo (cabeçalho CSP). `Utilizado o package disponibilizado pela mozilla, django-csp,
-para configurar a política: `
+    para configurar a política: 
+    DEFAULT_SRC = "'none'"
+    STYLE_SRC = "'self'", 'https://fonts.googleapis.com'
+    SCRIPT_SRC = "'self'", 'cdnjs.cloudflare.com'
+    FONT_SRC = "'self'", 'https://fonts.googleapis.com', 'https://fonts.gstatic.com'
+    IMG_SRC = "'self'"
 - [ ] Log gravado client-side.
 - [x] CVE-2017-7233 e CVE-2017-7234. `upgrade para django 1.10.7`
 - [x] Credenciais no código.
