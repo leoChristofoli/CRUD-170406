@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     # http://whitenoise.evans.io/en/stable/django.html#using-whitenoise-in-development
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
-    'oper'
+    'oper',
+    'request_profiler',
 ]
 
 #Allauth
@@ -56,6 +57,8 @@ INSTALLED_APPS += [
 ]
 
 MIDDLEWARE = [
+    'request_profiler.middleware.ProfilingMiddleware',
+
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

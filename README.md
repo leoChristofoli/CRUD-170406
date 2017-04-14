@@ -34,3 +34,15 @@ def produto_create(request, template_name='oper/produto_form.html'):
 ```
 
 Para rodar os testes: `python manage.py test`
+
+- [ ] Ausência de controle de requisições
+- [ ] O cookie de sessão trafega em meio sem criptografia.
+- [ ] Ausência do cabeçalho HSTS.
+- [ ] Ausência de verificação de integridade SRI para componentes carregados externamente.
+- [ ] Ausência de uma política de segurança para conteúdo (cabeçalho CSP).
+- [ ] Log gravado client-side.
+- [ ] CVE-2017-7233 e CVE-2017-7234.
+- [ ] Credenciais no código.
+- [ ] CVE-2016-9014.
+- [ ] Recuperação de senha não funciona.
+- [ ] Falha na lógica de negócio. Número negativo de produtos no cadastro.
