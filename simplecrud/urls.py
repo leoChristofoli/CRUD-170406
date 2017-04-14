@@ -19,11 +19,14 @@ from django.conf import settings
 
 from django.views.generic import RedirectView
 from django.conf.urls.static import static
+from allauth.account.views import login
+from axes.decorators import watch_login
 
 urlpatterns = [
     url(r'^$', RedirectView.as_view(url='produto')),
     url(r'^admin/', admin.site.urls),
     url(r'^produto/', include('oper.urls'), name='produto'),
+    url(r'^accounts/login/$', watch_login(login)),
     url(r'^accounts/', include('allauth.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

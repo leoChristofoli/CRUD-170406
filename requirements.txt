@@ -3,6 +3,7 @@ boto==2.46.1
 dj-database-url==0.4.1
 Django==1.10.7
 django-allauth==0.31.0
+django-axes==2.3.2
 django-crispy-forms==1.6.1
 django-csp==3.2
 django-ratelimit==1.0.1

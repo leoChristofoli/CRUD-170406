@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'oper',
+    'axes',
     'request_profiler',
 ]
 
@@ -189,3 +190,6 @@ SECURE_HSTS_SECONDS = 31536000
 SECURE_CONTENT_TYPE_NOSNIFF = True
 
 SECURE_BROWSER_XSS_FILTER = True
+
+AXES_COOLOFF_TIME = 1
+
