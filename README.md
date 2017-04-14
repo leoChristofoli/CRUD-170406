@@ -50,5 +50,5 @@ para configurar a política: `
 - [x] Recuperação de senha não funciona. `Servidor SMTP configurado - Sendgrid`
 - [x] Falha na lógica de negócio. Número negativo de produtos no cadastro. `Alterado de IntegerField para PositiveIntegerField`
 
-Adicionado *limite de requisições por IP* e *honeypot field* no formulário de novo produto
-Sessão expira em 3 minutos
+- Adicionado *limite de requisições por IP* e *honeypot field* no formulário de novo produto
+- Sessão expira em 3 minutos
