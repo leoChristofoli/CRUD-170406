@@ -45,5 +45,7 @@ para configurar a política: `
 - [x] CVE-2017-7233 e CVE-2017-7234. `upgrade para django 1.10.7`
 - [ ] Credenciais no código.
 - [x] CVE-2016-9014.
-- [ ] Recuperação de senha não funciona.
+- [x] Recuperação de senha não funciona. `Servidor SMTP configurado - Sendgrid`
 - [x] Falha na lógica de negócio. Número negativo de produtos no cadastro. `Alterado de IntegerField para PositiveIntegerField`
+
+Adicionado *limite de requisições por IP* e *honeypot field* no formulário de novo produto 
