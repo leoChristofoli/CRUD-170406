@@ -52,3 +52,4 @@ para configurar a política: `
 
 - Adicionado *limite de requisições por IP* e *honeypot field* no formulário de novo produto
 - Sessão expira em 3 minutos
+- Limite de tentativas de logon
