@@ -174,9 +174,9 @@ ACCOUNT_EMAIL_REQUIRED = True
 #
 
 CSP_DEFAULT_SRC = ("'none'",)
-CSP_STYLE_SRC = ("'self'",)
-CSP_SCRIPT_SRC = ("'self'",)
-CSP_FONT_SRC = ("'self'", 'fonts.googleapis.com')
+CSP_STYLE_SRC = ("'self'", 'https://fonts.googleapis.com')
+CSP_SCRIPT_SRC = ("'self'", 'cdnjs.cloudflare.com')
+CSP_FONT_SRC = ("'self'", 'https://fonts.googleapis.com', 'https://fonts.gstatic.com')
 CSP_IMG_SRC = ("'self'",)
 
 SESSION_COOKIE_SECURE = True
